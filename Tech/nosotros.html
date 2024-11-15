@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Informática en Línea</title>
+    <link rel="stylesheet" href="StyleCss/stylesnostros.css">
+
+</head>
+<body>
+    <nav>
+        <ul>
+        <a href="index.html"><b>Inicio</b></a>
+        <a href="tienda.html"><b>Tienda</b></a>
+        <a href="servicios.html"><b>Servicios</b></a>
+        <a href="nosotros.html"><b>Nosotros</b></a>
+        <button><a href="#" id="location-link">Encuentranos aquí</a></button>
+        </ul>
+    </nav>
+        <header>
+            <h1>Bienvenidos a GalTech</h1>
+            <p>Tu sitio confiable para elementos informáticos</p>
+        </header>
+
+    <main>
+        <section class="historia">
+            <h2>Nuestra Historia</h2>
+            <p>Desde nuestros comienzos, GalTech se dedica a ofrecer los mejores productos y componentes
+                informáticos en línea. Nos especializamos en proporcionar equipos de calidad, desde laptops y
+                ordenadores de escritorio, hasta accesorios como teclados, ratones y componentes avanzados.</p>
+            <p>Nuestra misión es facilitar el acceso a tecnología de punta a nuestros clientes, ofreciendo una experiencia
+                de compra en línea segura y rápida. Sabemos lo importante que es para ti encontrar equipos confiables y de
+                alto rendimiento, por eso trabajamos con marcas reconocidas y garantizamos la calidad en cada uno de
+                nuestros productos.</p>
+            <p>¿Listo para mejorar tu equipo? ¡Explora nuestras ofertas y encuentra justo lo que necesitas para tus
+                proyectos informáticos!</p>
+        </section>
+    </main>
+
+</body>
+    <footer>    
+        <div class="red-social">
+        <a href="https://www.facebook.com" target="_blank"><img src="Img/icons8-facebook-nuevo-48.png" alt="Facebook"></a>
+        <a href="https://www.twitter.com" target="_blank"><img src="Img/icons8-twitter-60.png" alt="Twitter"></a>
+        <a href="https://www.instagram.com" target="_blank"><img src="Img/icons8-instagram-48.png" alt="Instagram"></a>
+        <p>&copy; 2024 Galeano Tech© . Todos los derechos reservados.</p>
+        </div>      
+    </footer>
+    <script> document.getElementById('location-link').addEventListener('click', function(event) { event.preventDefault(); 
+        const lat = -27.320653; // latitud de tu comercio 
+        const lon =  -58.569481;  //longitud de tu comercio 
+        const url = `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`; window.open(url, '_blank'); }); 
+        </script>
+</html>

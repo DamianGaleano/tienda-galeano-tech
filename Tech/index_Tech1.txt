@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeano Tech</title>
+    <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header>
+        <h1>Productos Informaticos</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Principal</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="carrito.html">Carrito de Compras</a></li>
+                <li><a href="formulario.html">Formulario</a></li>
+            </ul>
+        </nav>
+
+        </header>
+        <main>
+    <section>
+    <div class="container1">
+    <figure> <a class="item1" style="background-image: url('produc informaticos/mouse.jpg');"></a>
+    <figcaption><h3>Mouse</h3><p>Precio: $15</p><button class="add-to-cart">Agregar al carrito</button></figcaption> </figure>
+
+    <figure> <a class="item2" style="background-image: url('produc informaticos/memoria_ram.jpg');"></a>
+    <figcaption><h3>Ram</h3><p>Precio: $75</p><button class="add-to-cart">Agregar al carrito</button></figcaption> </figure>
+
+    <figure> <a class="item3" style="background-image: url('produc informaticos/monitor.png');"></a>
+    <figcaption><h3>Monitor</h3><p>Precio: $175</p><button class="add-to-cart">Agregar al carrito</button></figcaption> </figure>
+    
+    <figure> <a class="item4" style="background-image: url('produc informaticos/copadapc.jpg');"></a>
+    <figcaption><h3>Gabinetes</h3><p>Precio: $250</p><button class="add-to-cart">Agregar al carrito</button></figcaption> </figure>
+    </div>
+
+    <div class="container2">
+        <figure> <a class="item5" href="" style="background-image: url('produc informaticos/placa de video.jpg');"></a>
+        <figcaption><h3>Placa de video </h3><p>Precio: $300</p><button class="add-to-cart">Agregar al carrito</button></figcaption> </figure>
+    
+        <figure> <a class="item6" href="" style="background-image: url('produc informaticos/procesador.jpg');"></a>
+        <figcaption><h3>Procesador</h3><p>Precio: $200</p><button class="add-to-cart">Agregar al carrito</button></figcaption> </figure>
+    
+        <figure> <a class="item7" href="" style="background-image: url('produc informaticos/auris.jpg');"></a>
+        <figcaption><h3>Auriculares</h3><p>Precio: $50</p><button class="add-to-cart">Agregar al carrito</button></figcaption> </figure>
+        
+        <figure> <a class="item8" href="" style="background-image: url('produc informaticos/teclado.jpg');"></a>
+        <figcaption><h3>Teclado</h3><p>Precio: $100</p><button class="add-to-cart">Agregar al carrito</button></figcaption> </figure>
+    </div>
+    </section>
+    </main>
+
+    <section class="products">
+        <aside>
+            <section class="tabla">
+                <table id="carrito" border="4">
+                    <thead border="4">
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Descartar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       <b> <!-- Los productos seleccionados se agregarán aquí --></b>
+                    </tbody>
+                </table>
+                <div id="total"><b>Total: $0.00</b></div> 
+                <a href="form_pagos.html" target="_blank" ><b>PAGA TUS ELECCIONES</b></a>
+            </section>
+        </aside>
+
+    
+    </main>
+
+    <script>
+        let totalAcumulado = 0;
+
+        const carrito = document.querySelector('#carrito tbody');
+        const total = document.getElementById('total');
+
+        // Agregar productos al carrito
+        const buttons = document.querySelectorAll('.add-to-cart');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const producto = button.parentNode;
+                const nombre = producto.querySelector('h3').textContent;
+                const precioTexto = producto.querySelector('p').textContent;
+                const precio = parseFloat(precioTexto.replace('Precio: $', ''));
+
+                // Crear fila para el carrito
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td>${nombre}</td>
+                    <td>$${precio.toFixed(2)}</td>
+                    <td>1</td>
+                    <td><button class="remove-from-cart">Eliminar</button></td>
+                `;
+                carrito.appendChild(fila);  
+
+                totalAcumulado += precio;
+                total.textContent = `Total:$${totalAcumulado.toFixed(2)}`;
+
+                // Eliminar productos del carrito
+                fila.querySelector('.remove-from-cart').addEventListener('click', () => {
+                    totalAcumulado -= precio;
+                    total.textContent = `Total: $${totalAcumulado.toFixed(2)}`;
+                    carrito.removeChild(fila);
+                });
+            });
+        });
+
+    </script>
+
+    </body>
+    <footer>
+            
+        <div class="red-social">
+        <a href="https://www.facebook.com" target="_blank"><img src="icons8-facebook-nuevo-48.png" alt="Facebook"></a>
+        <a href="https://www.twitter.com" target="_blank"><img src="icons8-twitter-60.png" alt="Twitter"></a>
+        <a href="https://www.instagram.com" target="_blank"><img src="icons8-instagram-48.png" alt="Instagram"></a>
+    </div>
+    <p>&copy; 2024 Galeano Tech© . Todos los derechos reservados.</p>
+    </footer>
+</html>

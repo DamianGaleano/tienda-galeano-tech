@@ -1,0 +1,79 @@
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="StyleCss/style-form.css">
+    <title>Clientes</title>  
+    
+</head>  
+<body>  
+    
+    <main>  
+        <section class="container">  
+          
+            <h2>Formulario de Registro</h2>                       <!-- https://formsubmit.co/pasitosgamingagustin@gmail.com      "https://formspree.io/f/xrbgkonj"-->
+            <form id="customer-form" method="POST" action="index.php" onsubmit="return setCarrito()">   
+                <input type="hidden" name="carrito" id="carrito"> <!-- Campo oculto para el carrito -->
+
+                <div class="form-group">  
+                    <label for="Nombre">Nombre:</label>  
+                    <input type="text" id="Nombre" name="Nombre" placeholder="Nombre" required>  
+                </div>  
+                <div class="form-group">  
+                    <label for="Apellido">Apellido:</label>  
+                    <input type="text" id="Apellido" name="Apellido" placeholder="Apellido" required>  
+                </div>  
+                <div class="form-group">  
+                    <label for="Dni">DNI:</label>  
+                    <input type="number" id="Dni" name="Dni" placeholder="DNI" required>  
+                </div>  
+                <div class="form-group">  
+                    <label for="Correo">Correo electrónico:</label>  
+                    <input type="email" id="Correo" name="Correo" placeholder="correo@ejemplo.com" required>  
+                </div>  
+                <div class="form-group">  
+                    <label for="FormaDePago">Forma de pago:</label>  
+                    <select name="FormaDePago" id="FormaDePago" required>  
+                        <option value="Tarjeta de débito">Tarjeta de débito</option>  
+                        <option value="Tarjeta de crédito">Tarjeta de crédito</option>  
+                        <option value="Efectivo">Efectivo</option>  
+                    </select>  
+                </div>  
+                <div class="form-group">  
+                    <label>¿Cómo prefiere recibir su pedido?</label>  
+                    <div>  
+                        <input type="radio" id="RetiraLocal" name="Envio" value="Retira del local" required>  
+                        <label for="RetiraLocal">Retira del local</label>  
+                    </div>  
+                    <div>  
+                        <input type="radio" id="EnvioDomicilio" name="Envio" value="Envío a domicilio" required>  
+                        <label for="EnvioDomicilio">Envío a domicilio</label>  
+                    </div>  
+                </div>  
+                <div class="form-group">  
+                    <label for="Domicilio">Domicilio:</label>  
+                    <input type="text" id="Domicilio" name="Domicilio" placeholder="Domicilio" required>  
+                </div>  
+                <div class="form-buttons">  
+                    <input type="submit" value="GUARDAR">  
+                    <input type="reset" value="BORRAR">  
+                </div>  
+                <div class="form-back">  
+                    <a href="tienda.html"><h2>Volver a Inicio</h2></a>  
+                </div>  
+            </form>  
+        </section>  
+    </main>  
+  
+    <script>
+        function setCarrito() {
+            const carritoField = document.getElementById('carrito');
+            const carritoList = localStorage.getItem('carrito') || 'Carrito vacío';
+            const total = localStorage.getItem('total') || '0.00';
+            carritoField.value = `${carritoList}; Total: $${total}`;
+            return true;
+        }
+    </script>
+</body>  
+</html>

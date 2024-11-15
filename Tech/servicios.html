@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios</title>
+    <link rel="stylesheet" href="StyleCss/styleservicio.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <ul>
+        <a href="index.html"><b>Inicio</b></a>
+        <a href="tienda.html"><b>Tienda</b></a>
+        <a href="servicios.html"><b>Servicios</b></a>
+        <a href="nosotros.html"><b>Nosotros</b></a>
+        <button><a href="#" id="location-link">Encuentranos aquí</a></button>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Servicios de Nuestra Tienda Informática</h1>
+    </header>
+
+    <div class="container">
+        <div class="service">
+            <h2>Asesoría Técnica y Soporte al Cliente</h2>
+            <p>Muchas tiendas informáticas en línea ofrecen asesoría gratuita o a bajo costo para ayudar a los clientes a elegir productos adecuados para sus necesidades. Este servicio puede incluir asistencia en la selección de piezas de computadoras, recomendaciones de software, o guías sobre compatibilidad de componentes. Además, el soporte técnico puede incluir ayuda remota para solucionar problemas con productos comprados.</p>
+        </div>
+
+        <div class="service">
+            <h2>Instalación y Configuración de Software</h2>
+            <p>Algunas tiendas ofrecen el servicio de preinstalación y configuración de sistemas operativos, drivers, y software adicional antes de enviar el hardware al cliente. Esto es especialmente útil para aquellos que compran equipos personalizados y prefieren recibirlos listos para usar, ahorrando tiempo en configuraciones iniciales.</p>
+        </div>
+
+        <div class="service">
+            <h2>Reparación y Mantenimiento de Equipos</h2>
+            <p>Aunque las ventas son en línea, algunas tiendas también cuentan con opciones de reparación y mantenimiento para clientes locales, o incluso ofrecen envíos para reparación. Este servicio puede incluir la sustitución de componentes defectuosos, mantenimiento preventivo como la limpieza de polvo y cambios de pasta térmica, o actualización de hardware para mejorar el rendimiento de equipos antiguos.</p>
+        </div>
+    </div>
+
+</body>
+    <footer>  
+        <div class="red-social">
+        <a href="https://www.facebook.com" target="_blank"><img src="Img/icons8-facebook-nuevo-48.png" alt="Facebook"></a>
+        <a href="https://www.twitter.com" target="_blank"><img src="Img/icons8-twitter-60.png" alt="Twitter"></a>
+        <a href="https://www.instagram.com" target="_blank"><img src="Img/icons8-instagram-48.png" alt="Instagram"></a>
+        </div>
+        <p>&copy; 2024 Galeano Tech© . Todos los derechos reservados.</p>
+</footer>
+</script>
+
+<script> document.getElementById('location-link').addEventListener('click', function(event) { event.preventDefault(); 
+ const lat = -27.320653; // latitud de tu comercio 
+ const lon =  -58.569481;  //longitud de tu comercio 
+ const url = `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`; window.open(url, '_blank'); }); 
+ </script>
+
+</html>

@@ -1,0 +1,85 @@
+body {
+    font-family: Arial;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav a:hover {
+    background-color: #575757;
+    padding: 10px;
+    text-decoration: underline;
+}
+
+h1 {
+    margin: 0;
+}
+button{
+    background-color: #333;
+  }
+.container {
+    text-align: center;
+    padding: 50px 0;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.service {
+    border: 2px solid #ddd; /* Borde alrededor del recuadro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espacio dentro del recuadro */
+    margin: 20px 0; /* Espacio entre cada servicio */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra exterior */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el hover */
+}
+
+.service:hover {
+    transform: scale(1.05); /* Agranda el recuadro al pasar el mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más intensa en hover */
+}
+
+.service h2 {
+    color: #333;
+}
+
+.service p {
+    color: #555;
+}
+
+.service:last-child {
+    border-bottom: none;
+}
+
+footer {
+    position: absolute; top:130%; width: 100%   ;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: auto;
+  }

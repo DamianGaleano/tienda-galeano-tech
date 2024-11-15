@@ -1,0 +1,107 @@
+Para crear una página secundaria que permita al cliente ingresar sus datos personales y enviar una vez que haya completado el carrito de compras, se puede crear un formulario sencillo en un archivo nuevo llamado `formulario.html`. En este formulario, también se debe manejar el envío de los datos tanto al cliente como al administrador, utilizando un script del lado del servidor (por ejemplo, en PHP) para enviar los correos electrónicos.
+
+### 1. Creación del formulario
+
+Aquí tienes un ejemplo de cómo podría lucir tu archivo `formulario.html`:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Compra</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Formulario de Compra</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Principal</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="carrito.html">Carrito de Compras</a></li>
+                <li><a href="formulario.html">Formulario</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <form id="customer-form" method="POST" action="send_email.php">
+                <label for="name">Nombre:</label><br>
+                <input type="text" id="name" name="name" required><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="phone">Teléfono:</label><br>
+                <input type="tel" id="phone" name="phone" required><br>
+
+                <h3>Detalles de Compra</h3>
+                <textarea id="details" name="details" readonly></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <script>
+        // Recuperar el detalle de compra de session storage
+        const detalleCompra = JSON.parse(sessionStorage.getItem('detalleCompra'));
+        const detailsTextArea = document.getElementById('details');
+
+        if (detalleCompra) {
+            let details = "";
+            detalleCompra.productos.forEach(producto => {
+                details += `${producto.nombre}: ${producto.precio}\n`;
+            });
+            details += `Total: ${detalleCompra.total}`;
+            detailsTextArea.value = details;
+        }
+    </script>
+</body>
+<footer>
+    <p>&copy; 2024 Galeano Tech© . Todos los derechos reservados.</p>
+</footer>
+</html>
+```
+
+### 2. Script de PHP para enviar el correo
+
+A continuación, se debe escribir un script PHP llamado `send_email.php` para procesar el formulario. Este script recogerá los datos del formulario y enviará un correo tanto al administrador como al cliente:
+
+```php
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $phone = htmlspecialchars($_POST['phone']);
+    $details = htmlspecialchars($_POST['details']);
+
+    // Datos del correo para el administrador
+    $to_admin = 'admin@tusitio.com'; // Cambia esto por la dirección de tu administrador
+    $subject_admin = 'Nueva compra registrada';
+    $message_admin = "Nombre: $name\nEmail: $email\nTeléfono: $phone\n\nDetalles de Compra:\n$details";
+    mail($to_admin, $subject_admin, $message_admin);
+
+    // Datos del correo para el cliente
+    $subject_client = 'Confirmación de compra';
+    $message_client = "Gracias por tu compra, $name.\n\nAquí están los detalles de tu compra:\n$details";
+    mail($email, $subject_client, $message_client);
+
+    // Redirigir a una página de confirmación
+    header('Location: gracias.html'); // Cambia esto a tu página de gracias
+    exit();
+}
+?>
+```
+
+### Notas Importantes:
+
+1. **Verificación en el servidor**: Asegúrate de tener habilitado el envío de correos electrónicos en tu servidor. La función `mail()` puede requerir configuraciones adicionales en algunos servidores.
+
+2. **Seguridad**: Considera utilizar medidas adicionales de seguridad, como la validación de entrada y el uso de bibliotecas como PHPMailer para enviar correos electrónicos personalizados con más opciones.
+
+3. **Redirección a la página de confirmación**: Puedes crear una página `gracias.html` que confirme que la compra se ha realizado con éxito.
+
+Con este diseño, cuando el usuario presiona "PAGA TUS ELECCIONES" en el carrito, se abrirá el `formulario.html` donde podrá ingresar sus datos. Luego, al enviar el formulario, se enviará un correo al administrador y al cliente con los detalles de la compra.
